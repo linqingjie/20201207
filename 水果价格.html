@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input id="Apple" type="text" placeholder="苹果数量">
+    <input id="Pear" type="text" placeholder="梨数量">
+    <input id="watermelon" type="text" placeholder="西瓜数量">
+
+
+</body>
+
+</html>
+<script>
+    var Apple = document.getElementById("Apple");
+    var Pear = document.getElementById("Pear");
+    var watermelon = document.getElementById("watermelon");
+
+    document.onkeydown = function (event) {
+        var key = event.keyCode;
+
+        if (key == 13) {
+            var a = Apple.value;
+            var p = Pear.value;
+            var w = watermelon.value;
+            var price = a * 3 + p * 2 + w * 15;
+            alert("水果总价格为" + price + "元");
+        }
+    }
+    var dt = new Date();
+    console.log(dt.getDay())
+    // console.log(14 % 15)
+    // var a = 1;
+    // var b = 9;
+    // b=b-a;
+    // a =b+a;
+    // b = a-b;
+    // var a = prompt("请输入要计算的数字");
+    // var b = prompt("请输入要计算的数字");
+    // var c = parseInt(a) + parseInt(b);
+    // alert(c);
+    // var d = Math.sqrt(81);
+    // var f = Math.sqrt(49);
+    // var aa = Math.pow(2, 3 * 3)
+    // console.log(d)
+    // console.log(f)
+    // console.log(aa)
+
+</script>

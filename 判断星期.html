@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input id="current" type="text" placeholder="输入天数">
+    <input id="centigrade" type="text" placeholder="输入天数">
+    <input id="fd" type="text" placeholder="星期数">
+
+
+
+</body>
+
+</html>
+<script>
+    var centigrade = document.getElementById("centigrade");
+    var current = document.getElementById("current");
+    var fd = document.getElementById("fd");
+    var dt = new Date();
+    var q = dt.getDay()
+    current.value = "当前星期" + q;
+    document.onkeydown = function (event) {
+        var key = event.keyCode;
+        if (key == 13) {
+            var a = parseInt(centigrade.value);
+            var b = a % 7;
+            var c = b + q;
+            if (c < 7) {
+                fd.value = a + "天后是星期" + c;
+            } else if (c == 7) {
+                fd.value = a + "天后是星期" + 0;
+            } else {
+                fd.value = a + "天后是星期" + c % 7;
+            }
+        }
+    }
+
+    // console.log(dt.getDay())
+
+
+</script>

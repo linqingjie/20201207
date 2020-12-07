@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>搜索框列表选项切换</title>
+    <style>
+        body,
+        ul {
+            padding: 0;
+            margin: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .wrapper {
+            ` width: 600px;
+            height: 900px;
+            background-color: #f0f0f0;
+        }
+
+        .search {
+            width: 600px;
+            height: 80px;
+            background-color: #ccc;
+            line-height: 80px;
+            text-align: center;
+        }
+
+        .search input {
+            height: 40px;
+            width: 500px;
+            vertical-align: middle;
+        }
+
+        .list {
+            width: 600px;
+            display: none;
+        }
+
+        .list ul {
+            width: 500px;
+            margin: 0 auto;
+        }
+
+        .list ul li {
+            padding: 0 10px;
+            line-height: 36px;
+            height: 36px;
+            border-bottom: 1px solid skyblue;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .list ul li.current {
+            background-color: red;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <!-- 搜索框 -->
+        <div class="search">
+            <input type="text" placeholder="搜索框" id="input1">
+        </div>
+        <!-- 列表 -->
+        <div class="list">
+            <ul>
+                <li>衣服男装</li>
+                <li>衣服女装</li>
+                <li>衣服上衣</li>
+                <li>衣服T恤</li>
+                <li>衣服卫衣外套</li>
+                <li>衣服棉袄</li>
+                <li>衣服裤子</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 引入jquery文件 -->
+    <script src="./jquery-3.4.1.js"></script>
+    <script>
+        // 需求：
+        // 1.0 当输入框有值 ，显示列表
+        // 2.0 当输入框没有值 ，隐藏列表
+        // 3.0 当按下了键盘向下按键 ，会选择列表选项的下一项设置背景高亮 其相邻元素移除背景高亮
+        // 4.0 当按下了键盘向上按键 ，会选择列表选项的上一项设置背景高亮 其相邻元素移除背景高亮
+        // 参考地址：https://www.tmall.com/
+        $(function () {
+            var input = -1;
+            var bool = false;
+            var aa1 = function (event) {
+                var key = event.keyCode;
+                if (key == 40) {
+                    input++;
+                    input = input > 6 ? 0 : input;
+                    $("ul li").eq(input).addClass('current').siblings().removeClass('current');
+                }
+                if (key == 38) {
+                    input--;
+                    input = input < 0 ? 6 : input;
+                    $("ul li").eq(input).addClass('current').siblings().removeClass('current');
+                }
+            }
+            $("#input1").bind("keydown", aa1)
+
+            $("#input1").bind("input", function () {
+                console.log(input);
+                var aa = $("#input1").val().length;
+                if (aa > 0) {
+                    $(".list").slideDown(500);
+                    if (bool) {
+                        $("#input1").bind("keydown", aa1)
+
+                    }
+
+                }
+                else {
+                    $("li").removeClass("current")
+                    $(".list").hide();
+                    input = -1;
+                    console.log(input)
+                    bool = true;
+
+                    $("#input1").unbind("keydown", aa1)
+
+                }
+            })
+        })
+
+
+
+    </script>
+</body>
+
+</html>

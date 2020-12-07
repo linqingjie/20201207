@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery 循环 each</title>
+    <style>
+        button {
+            width: 120px;
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+    <button>按钮1</button>
+    <button>按钮2</button>
+    <button>按钮3</button>
+    <button>按钮4</button>
+    <button>按钮5</button>
+</body>
+</html>
+<script src="./jquery/jquery-3.4.1.js"></script>
+<script>
+    // .0 颜色数组
+    var arrColor = [
+        "skyblue",
+        "lightgreen",
+        "darkred",
+        "pink",
+        "lightyellow"
+    ]
+    // 1.0 第一种写法：
+    // 调用者：jquery对象
+    // 参数：匿名函数 function(index,dom){}
+    // 返回值：jquery对象
+    // 功能：循环标签数组 jquery对象的标签
+    // $("button").each(function(index,dom){
+    //     // .0 index 索引值 0 ~ 4 
+    //     // .0 dom 元素
+    //     // dom.style.backgroundColor = arrColor[index];
+    //     // .0 转jquery 对象
+    //     $(dom).css("backgroundColor",arrColor[index]);
+    // })
+
+
+    // 2.0 第二种写法:
+    // 调用者:$
+    // 参数:a. 数组(普通数组)  b.匿名函数
+    // 返回值:忽略
+    // 功能: 循环数组(任何数组)
+    // console.log($);
+    // 普通数组
+    // $.each(arrColor , function(index,item){
+    //     // console.log(index); 数据的索引值
+    //     // console.log(item);  每一项数据
+    //     $("button").eq(index).css("backgroundColor",item);
+    // } )
+
+    // 伪数组
+    $.each( $("button") , function(index,item){
+        // console.log(index); //数据的索引值
+        // console.log(item); // 每一项数据
+        $(item).css("backgroundColor",arrColor[index]);
+    } )
+
+
+</script>

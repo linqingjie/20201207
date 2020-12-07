@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input id="centigrade" type="text" placeholder="输入摄氏度">
+    <input id="fd" type="text" placeholder="华氏度">
+
+
+
+</body>
+
+</html>
+<script>
+    var centigrade = document.getElementById("centigrade");
+    var fd = document.getElementById("fd");
+    document.onkeydown = function (event) {
+        var key = event.keyCode;
+        if (key == 13) {
+            var a = centigrade.value;
+            var price = a * 1.8 + 32;
+            fd.value = price + "F";
+        }
+    }
+    var dt = new Date();
+    console.log(dt.getDay())
+
+
+</script>

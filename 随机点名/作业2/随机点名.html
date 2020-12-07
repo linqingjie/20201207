@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .content {
+            width: 400px;
+            height: 500px;
+            border: 2px solid black;
+        }
+
+        .top {
+            width: 360px;
+            height: 370px;
+            margin: 15px auto;
+            border: 2px solid black;
+            text-align: center;
+            font-size: 30px;
+            line-height: 370px;
+        }
+
+        .bottom {
+            width: 360px;
+            height: 50px;
+            margin: 10px auto;
+        }
+
+        button {
+            height: 50px;
+            width: 150px;
+        }
+
+        #btn1 {
+            margin-right: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <div class="top"></div>
+        <div class="bottom">
+            <button id="btn1">开始点名</button>
+            <button id="btn2">结束点名</button>
+        </div>
+    </div>
+</body>
+
+</html>
+<script src="./jquery-3.4.1.js"></script>
+<script>
+    $.fn.randomChooseName = function (dom, shuzhu, btn1, btn2) {
+        var timer = null;
+        $(btn1).on("click", function () {
+            $(this).css("background", "red");
+            $(btn2).css("background", "");
+            clearInterval(timer);
+            timer = setInterval(function () {
+                var res1 = Math.random() * shuzhu.length;
+                var res2 = Math.floor(res1);
+                dom.text(shuzhu[res2])
+            }, 100)
+        })
+        $(btn2).on("click", function () {
+            $(this).css("background", "red");
+            $(btn1).css("background", "");
+            clearInterval(timer);
+
+        })
+
+    }
+    $(function () {
+        var ChooseName = [
+            "罗傻子",
+            "罗憨憨",
+            "罗傻比",
+            "罗骚彬",
+            "罗燎彬",
+            "罗猪",
+            "罗逗逼",
+            "罗二狗",
+            "罗翠花",
+            "罗铁蛋"
+        ]
+        $(".top").randomChooseName($(".top"), ChooseName, "#btn1", "#btn2");
+
+
+
+
+    })
+</script>
